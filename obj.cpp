@@ -19,6 +19,8 @@ bool Filter::eventFilter(QObject * obj, QEvent * event) {
     } else {
       qDebug() << "Hihi";
     }
+  } else {
+    qDebug() << "Hihi";
   }
-  QObject::eventFilter(obj, event); 
+  return QObject::eventFilter(obj, event); 
 }
