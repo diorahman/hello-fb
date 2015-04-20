@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QKeyEvent>
 #include <QWidget>
+#include <QTime>
 
 Filter::Filter(QObject* parent) : QObject(parent) {
   app = qobject_cast<QWidget*>(parent);
@@ -12,7 +13,6 @@ Filter::~Filter(){}
 
 bool Filter::eventFilter(QObject * obj, QEvent * event) {
   if (event->type() == QEvent::KeyPress) {
-    QKeyEvent * keyEvent = (QKeyEvent*) event;
     if (app) {
       qDebug() << "HAHAH";
       app->close();
@@ -20,7 +20,7 @@ bool Filter::eventFilter(QObject * obj, QEvent * event) {
       qDebug() << "Hihi";
     }
   } else {
-    qDebug() << "Hihi";
+    qDebug() << QTime::currentTime().toString() << " - " << event->type();
   }
   return QObject::eventFilter(obj, event); 
 }
